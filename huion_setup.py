@@ -21,10 +21,10 @@ My current four screens configuration
 
 # Total Screen size
 
-total_width = 4*1920 # Four monitors 1920 pixels width, 4*1920=7680 pixels width
+total_width = 4*1920 # Four monitors 1920 pixels width, 4*1920=7680 pixels
 total_height = 1080  # All monitors horizontal
 
-# Huion Screen size
+# Huion Screen resolution
 
 touch_area_width = 1920 # Huion width
 touch_area_height = 1080 # Huion height
@@ -32,7 +32,7 @@ touch_area_height = 1080 # Huion height
 # Huion Screen localization
 
 touch_area_x_offset = 1920 # Huion start at 1920 pixels from left
-touch_area_y_offset = 0
+touch_area_y_offset = 0 # no offset vertically
 
 # Pen adjustment
 
