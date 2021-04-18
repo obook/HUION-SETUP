@@ -61,7 +61,7 @@ def SetPen(c0, c1, c2, c3):
                     return(int(id))
     return(-1)
                 
-def center_window(window, w=300, h=50):
+def center_window(window, w=300, h=100):
     # get screen width and height
     ws = window.winfo_screenwidth()
     hs = window.winfo_screenheight()
