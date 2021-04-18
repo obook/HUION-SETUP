@@ -46,9 +46,9 @@ c2 = touch_area_height / total_height # 1080/1080 = 1
 c1 = touch_area_x_offset / total_width + x_correction # 1920/7680 -0.003 = 0.247
 c3 = touch_area_y_offset / total_height + y_correction # 0/1080 -0.005 = -0.005
 
-print(c0, c1, c2, c3)
+# print(c0, c1, c2, c3)
 
-def GetPenId():
+def SetPen(c0, c1, c2, c3):
     lines = subprocess.check_output(["xinput", "list"]).decode('utf-8').splitlines()
     
     for line in lines:
@@ -58,8 +58,8 @@ def GetPenId():
                 if "id=" in part:
                     id = part.split("=")[1]
                     subprocess.Popen(['xinput set-prop %s --type=float "Coordinate Transformation Matrix" %s 0 %s 0 %s %s 0 0 1' % (id, c0, c1, c2, c3)], shell = True)
-                    return(id)
-    return(False)
+                    return(int(id))
+    return(-1)
                 
 def center_window(window, w=300, h=50):
     # get screen width and height
@@ -70,8 +70,8 @@ def center_window(window, w=300, h=50):
     y = (hs/2) - (h/2)
     window.geometry('%dx%d+%d+%d' % (w, h, x, y))
 
-id = GetPenId()
-if( id != False ):
+id = SetPen(c0, c1, c2, c3)
+if( id > 0 ):
     message = "Tablet Monitor Pen (pointer) id " + str(id) + " setup done."
 else:
     message = "ERROR\nTablet Monitor Pen (pointer) not found\nUse the pen for activate the USB detection"
