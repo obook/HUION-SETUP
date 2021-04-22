@@ -60,7 +60,18 @@ def SetPen(c0, c1, c2, c3):
                     subprocess.Popen(['xinput set-prop %s --type=float "Coordinate Transformation Matrix" %s 0 %s 0 %s %s 0 0 1' % (id, c0, c1, c2, c3)], shell = True)
                     return(int(id))
     return(-1)
-                
+    
+def isipython():
+    try:
+        shell = get_ipython().__class__.__name__
+        print(shell)
+        if shell == 'ZMQInteractiveShell':
+            return True
+        else:
+            return False  # Other type (?)
+    except NameError:
+        return False      # Probably standard Python interpreter
+
 def center_window(window, w=300, h=100):
     # get screen width and height
     ws = window.winfo_screenwidth()
@@ -76,12 +87,15 @@ if( id > 0 ):
 else:
     message = "ERROR\nTablet Monitor Pen (pointer) not found\nUse the pen for activate the USB detection"
     
-racine = tk.Tk()
-racine.iconphoto(False, tk.PhotoImage(file=os.path.join(os.path.dirname(__file__), 'huion_logo.png')))
-racine.title("HUION SETUP")
-center_window(racine)
-label = tk.Label(racine, text=message)
-bouton = tk.Button(racine, text="Quit", fg="red", command=racine.destroy)
-label.pack()
-bouton.pack()
-racine.mainloop()
+if isipython() == False:
+    racine = tk.Tk()
+    racine.iconphoto(False, tk.PhotoImage(file=os.path.join(os.path.dirname(__file__), 'huion_logo.png')))
+    racine.title("HUION SETUP")
+    center_window(racine)
+    label = tk.Label(racine, text=message)
+    bouton = tk.Button(racine, text="Quit", fg="red", command=racine.destroy)
+    label.pack()
+    bouton.pack()
+    racine.mainloop()
+else:
+    print(message)
