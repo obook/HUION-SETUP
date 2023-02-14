@@ -85,7 +85,7 @@ id = SetPen(c0, c1, c2, c3)
 if( id > 0 ):
     message = "Tablet Monitor Pen (pointer) id " + str(id) + " setup done."
 else:
-    message = "ERROR\nTablet Monitor Pen (pointer) not found\nUse the pen for activate the USB detection"
+    message = "ERROR\nTablet Monitor Pen (pointer) not found\nTouch the screen with the pen\nfor activate USB detection"
     
 if isipython() == False:
     racine = tk.Tk()
