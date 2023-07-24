@@ -4,6 +4,7 @@
 Created on Sun Apr 11 19:13:23 2021
 @author: obooklage
 Huion Pen Display Kamvas 13 setup https://www.huion.com/pen_display/Kamvas/kamvas-13.html
+Ce programme devient obsolete depuis que la tablete est prise en charge par Linux ?
 """
 
 import os
